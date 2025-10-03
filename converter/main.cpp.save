@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+//#include "../stkType.h"
+
+struct cmd_t {
+    char* cmd_name = {};
+    int cmd_code = 0;
+};
+
+int file_line_cnt(FILE* reader);
+
+int main(void) {
+
+    FILE* reader = fopen("ASM.txt", "r");
+
+    int cnt = file_line_cnt(reader);
+
+    rewind(reader);
+
+    cnd_t* buffer = (cmd_t*)calloc(cnt, sizeof(cmd_t));
+
+    fread(buffer, cnt*sizeof(cmd_t), reader);
+    
+    fclose(reader);
+    
+    
+
+    while (fscanf(reader, "%s %d", ))
+
+    return 0;
+}
+
+int file_line_cnt(FILE* reader) {
+    int cnt = 0;
+    char buf[100] = {};
+
+    while((ch = (char)fgetc(reader)) != EOF) {
+        if (ch == '\n')
+            cnt++;
+
+    return cnt;
+}

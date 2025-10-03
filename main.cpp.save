@@ -1,18 +1,11 @@
 #include<stdio.h>
-#include<stdlib.h>
 #include<assert.h>
+#include<errno.h>
+#include<string.h>
+#include<stdlib.h>
 
 #include "stkType.h"
-
-void stack_init(stack_t* stk, int min_stk_size);
-
-int stack_push(stack_t* stk, int num);
-
-int stack_pop(stack_t* stk);
-
-int stack_destroy(stack_t* stk);
-
-int canary_value = 0xDEADBEEF;
+#include "calc.h"
 
 int main(void) {
     stack_t super_stk = {};
@@ -20,10 +13,9 @@ int main(void) {
 
     int err = 0;
 
-    for (int i = 0; i < 7; i++)
-        err = stack_push(&super_stk, 10);
+   // err = calculator(&super_stk);
 
-    for (size_t i = 0; i < super_stk.flag; i++)
+    for (size_t i = 0; i <= super_stk.flag; i++)
         printf(" [%d] %d\n", i, super_stk.buffer[i]);
 
     printf("flag is: %d\n", super_stk.flag);
@@ -42,64 +34,6 @@ int main(void) {
     return 0;
 }
 
-void stack_init(stack_t* stk, int min_stk_size) {
-    stk->buffer[0] = canary_value;
 
-    stk->stk_size = min_stk_size;
 
-    stk->buffer = (int*)calloc(min_stk_size + 2, sizeof(int));
-}
 
-int stack_push(stack_t* stk, int num) {
-
-    int err = 0;
-
-    assert(stk);
-
-    size_t ind = stk->flag;
-
-    stk->buffer[ind] = num;
-
-    stk->flag++;
-
-    if (ind >= (stk->stk_size - 1)) {
-        stk->stk_size *= 2;
-
-        stk->buffer = (int*)realloc(stk->buffer, stk->stk_size*sizeof(int));
-    }
-    
-    stk->buffer[flag] = canary_value;
-
-    return err;
-}
-
-int stack_pop(stack_t* stk) {
-
-    assert(stk);
-
-    stk->flag--;
-
-    int value = stk->buffer[stk->flag];
-
-    printf("we got %d\n", value);
-
-    /*if (stk->flag < 0) {
-
-        err = 1;
-    }    */
-
-    return value;
-}
-
-int stack_destroy(stack_t* stk) {
-
-    free(stk->buffer);
-
-    stk->stk_size = 0;
-
-    stk->flag = 1;
-
-    stk->buffer = NULL;
-
-    return 0;
-}

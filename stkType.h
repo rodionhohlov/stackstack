@@ -1,16 +1,36 @@
 #ifndef STKTYPE_H_INCLUDED
 #define STKTYPE_H_INCLUDED
 
-/*struct err_t {
-    int err_code = 0;
-    char err_txt[50] = {};
-}; */
+enum err_code {
+    NO_ERROR     = 0,
+    NULL_BUF     = 1,
+    FILL_SIZE    = 2,
+    ATTACK_LEFT  = 3,
+    ATTACK_RIGHT = 4,
+    LESS_NUL_SZ  = 5,
+    NULL_STACK   = 6,
+    LESS_NUL_FLG = 7
+};
 
 struct stack_t {
     size_t stk_size = 0;
     int* buffer = {};
     size_t flag = 1;
-   // err_t err = {.err_code = 0; .err_txt = "NO ERROR"};
+    err_code err = NO_ERROR;
 };
+
+void stack_init(stack_t* stk, int min_stk_size);
+
+void stack_push(stack_t* stk, int num);
+
+int stack_pop(stack_t* stk);
+
+void stack_destroy(stack_t* stk);
+
+void stack_verify(stack_t* stk, const char* file, int line);
+
+void stack_dump(stack_t* stk, const char* file, int line);
+
+void translate_err_code(stack_t* stk, char* str);
 
 #endif // STKTYPE_H_INCLUDED

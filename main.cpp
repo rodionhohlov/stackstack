@@ -1,105 +1,37 @@
 #include<stdio.h>
-#include<stdlib.h>
 #include<assert.h>
+#include<string.h>
+#include<stdlib.h>
 
 #include "stkType.h"
-
-void stack_init(stack_t* stk, int min_stk_size);
-
-int stack_push(stack_t* stk, int num);
-
-int stack_pop(stack_t* stk);
-
-int stack_destroy(stack_t* stk);
-
-int canary_value = 0xDEADBEEF;
+//#include "calc.h"
 
 int main(void) {
     stack_t super_stk = {};
     stack_init(&super_stk, 5);
 
-    int err = 0;
+   // err = calculator(&super_stk);
+        stack_push(&super_stk, 12);
 
-    for (int i = 0; i < 7; i++)
-        err = stack_push(&super_stk, 10);
-
-    for (size_t i = 0; i < super_stk.flag; i++)
+    for (size_t i = 0; i <= super_stk.flag; i++)
         printf(" [%d] %d\n", i, super_stk.buffer[i]);
 
     printf("flag is: %d\n", super_stk.flag);
 
-    printf("%d %d\n", super_stk.buffer[0], super_stk.buffer[1]);
+   // printf("%d %d\n", super_stk.buffer[0], super_stk.buffer[1]);
     printf("size is: %d\n", super_stk.stk_size);
 
     int get_val = stack_pop(&super_stk);
 
     printf("popped value: %d\n\n", get_val);
 
-    err = stack_destroy(&super_stk);
+    stack_destroy(&super_stk);
 
     printf("ptr on stk: %p\n", super_stk.buffer);
 
     return 0;
 }
 
-void stack_init(stack_t* stk, int min_stk_size) {
-    stk->buffer[0] = canary_value;
 
-    stk->stk_size = min_stk_size;
 
-    stk->buffer = (int*)calloc(min_stk_size + 2, sizeof(int));
-}
 
-int stack_push(stack_t* stk, int num) {
-
-    int err = 0;
-
-    assert(stk);
-
-    size_t ind = stk->flag;
-
-    stk->buffer[ind] = num;
-
-    stk->flag++;
-
-    if (ind >= (stk->stk_size - 1)) {
-        stk->stk_size *= 2;
-
-        stk->buffer = (int*)realloc(stk->buffer, stk->stk_size*sizeof(int));
-    }
-
-    stk->buffer[stk->flag] = canary_value;
-
-    return err;
-}
-
-int stack_pop(stack_t* stk) {
-
-    assert(stk);
-
-    stk->flag--;
-
-    int value = stk->buffer[stk->flag];
-
-    printf("we got %d\n", value);
-
-    /*if (stk->flag < 0) {
-
-        err = 1;
-    }    */
-
-    return value;
-}
-
-int stack_destroy(stack_t* stk) {
-
-    free(stk->buffer);
-
-    stk->stk_size = 0;
-
-    stk->flag = 1;
-
-    stk->buffer = NULL;
-
-    return 0;
-}

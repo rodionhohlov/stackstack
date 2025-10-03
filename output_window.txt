@@ -1,0 +1,448 @@
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 5 
+capacity = 0 
+data = 009E1540
+     empty [0] = -559038737
+     empty [1] = 0
+     empty [2] = 0
+     empty [3] = 0
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 5 
+capacity = 1 
+data = 009E1540
+    filled [0] = -559038737
+     empty [1] = 12
+     empty [2] = 0
+     empty [3] = 0
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 5 
+capacity = 1 
+data = 009E1540
+    filled [0] = -559038737
+     empty [1] = 12
+     empty [2] = 0
+     empty [3] = 0
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 5 
+capacity = 2 
+data = 009E1540
+    filled [0] = -559038737
+    filled [1] = 12
+     empty [2] = 12
+     empty [3] = 0
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 5 
+capacity = 2 
+data = 009E1540
+    filled [0] = -559038737
+    filled [1] = 12
+     empty [2] = 12
+     empty [3] = 0
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 5 
+capacity = 3 
+data = 009E1540
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+     empty [3] = 12
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 5 
+capacity = 3 
+data = 009E1540
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+     empty [3] = 12
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 5 
+capacity = 4 
+data = 009E1540
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+     empty [4] = 12
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 5 
+capacity = 4 
+data = 009E1540
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+     empty [4] = 12
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 10 
+capacity = 5 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+     empty [5] = 12
+     empty [6] = -559038737
+     empty [7] = 1145659218
+     empty [8] = 1230261829
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 10 
+capacity = 5 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+     empty [5] = 12
+     empty [6] = -559038737
+     empty [7] = 1145659218
+     empty [8] = 1230261829
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 10 
+capacity = 6 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+     empty [6] = 12
+     empty [7] = 1145659218
+     empty [8] = 1230261829
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 10 
+capacity = 6 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+     empty [6] = 12
+     empty [7] = 1145659218
+     empty [8] = 1230261829
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 10 
+capacity = 7 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+     empty [7] = 12
+     empty [8] = 1230261829
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 10 
+capacity = 7 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+     empty [7] = 12
+     empty [8] = 1230261829
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 10 
+capacity = 8 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+     empty [8] = 12
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 10 
+capacity = 8 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+     empty [8] = 12
+     empty [9] = 1380272454
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 10 
+capacity = 9 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+     empty [9] = 12
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 10 
+capacity = 9 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+     empty [9] = 12
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 20 
+capacity = 10 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+    filled [9] = 12
+     empty [10] = 12
+     empty [11] = -559038737
+     empty [12] = 1627390049
+     empty [13] = 45209
+     empty [14] = 10373280
+     empty [15] = 10360128
+     empty [16] = 540554545
+     empty [17] = 1885697107
+     empty [18] = 1735289200
+     empty [19] = 539769120
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEE4]
+size = 20 
+capacity = 10 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+    filled [9] = 12
+     empty [10] = 12
+     empty [11] = -559038737
+     empty [12] = 1627390049
+     empty [13] = 45209
+     empty [14] = 10373280
+     empty [15] = 10360128
+     empty [16] = 540554545
+     empty [17] = 1885697107
+     empty [18] = 1735289200
+     empty [19] = 539769120
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEE4]
+size = 20 
+capacity = 11 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+    filled [9] = 12
+    filled [10] = 12
+     empty [11] = 12
+     empty [12] = 1627390049
+     empty [13] = 45209
+     empty [14] = 10373280
+     empty [15] = 10360128
+     empty [16] = 540554545
+     empty [17] = 1885697107
+     empty [18] = 1735289200
+     empty [19] = 539769120
+
+stack_dump is called from stkType.cpp: 49
+stack[0064FEE4]
+size = 20 
+capacity = 11 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+    filled [9] = 12
+    filled [10] = 12
+     empty [11] = 12
+     empty [12] = 1627390049
+     empty [13] = 45209
+     empty [14] = 10373280
+     empty [15] = 10360128
+     empty [16] = 540554545
+     empty [17] = 1885697107
+     empty [18] = 1735289200
+     empty [19] = 539769120
+
+stack_dump is called from stkType.cpp: 59
+stack[0064FEE4]
+size = 20 
+capacity = 10 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+    filled [9] = 12
+     empty [10] = 12
+     empty [11] = 12
+     empty [12] = 1627390049
+     empty [13] = 45209
+     empty [14] = 10373280
+     empty [15] = 10360128
+     empty [16] = 540554545
+     empty [17] = 1885697107
+     empty [18] = 1735289200
+     empty [19] = 539769120
+
+stack_dump is called from stkType.cpp: 68
+stack[0064FEE4]
+size = 20 
+capacity = 10 
+data = 009E15A8
+    filled [0] = -559038737
+    filled [1] = 12
+    filled [2] = 12
+    filled [3] = 12
+    filled [4] = 12
+    filled [5] = 12
+    filled [6] = 12
+    filled [7] = 12
+    filled [8] = 12
+    filled [9] = 12
+     empty [10] = 12
+     empty [11] = 12
+     empty [12] = 1627390049
+     empty [13] = 45209
+     empty [14] = 10373280
+     empty [15] = 10360128
+     empty [16] = 540554545
+     empty [17] = 1885697107
+     empty [18] = 1735289200
+     empty [19] = 539769120
+
+stack_dump is called from stkType.cpp: 21
+stack[0064FEF0]
+size = 5 
+capacity = 0 
+data = 00D41540
+     empty [0] = -559038737
+     empty [1] = 0
+     empty [2] = 0
+     empty [3] = 0
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 24
+stack[0064FEF0]
+size = 5 
+capacity = 0 
+data = 00BE1540
+     empty [0] = -559038737
+     empty [1] = 0
+     empty [2] = 0
+     empty [3] = 0
+     empty [4] = 0
+
+stack_dump is called from stkType.cpp: 42
+stack[0064FEF0]
+size = 5 
+capacity = 1 
+data = 00BE1540
+    filled [0] = -559038737
+     empty [1] = 12
+     empty [2] = 0
+     empty [3] = 0
+     empty [4] = 0
+
