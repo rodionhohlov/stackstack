@@ -1,8 +1,18 @@
 #ifndef CALC_H_INCLUDED
 #define CALC_H_INCLUDED
 
-int calculator(stack_t* stk);
+#include "stkType.h"
 
-void make_func(stack_t* stk, char* func, int num, int res);
+struct byte_t {
+    int* buffer;
+    size_t capacity;
+    int flag;
+};
+
+void program_slave(void);
+
+void solve_slave(byte_t* bytecode);
+
+byte_t fill_bytecode_buffer(FILE* reader);
 
 #endif // CALC_H_INCLUDED

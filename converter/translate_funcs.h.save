@@ -1,0 +1,15 @@
+#ifndef TRANSLATE_FUNCS_H_INCLUDED
+#define TRANSLATE_FUNCS_H_INCLUDED
+
+struct cmd_t {
+    char cmd_name[20];
+    int cmd_code;
+};
+
+struct byte_t {   //my bytecode array
+    int* buffer;
+    int capasity;
+};
+
+
+#endif // TRANSLATE_FUNCS_H_INCLUDED

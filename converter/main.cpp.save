@@ -1,42 +1,61 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 
-//#include "../stkType.h"
-
-struct cmd_t {
-    char* cmd_name = {};
-    int cmd_code = 0;
-};
 
 int file_line_cnt(FILE* reader);
 
+cmd_t* fill_cmd_buffer(const char* file_name, int* cnt);
+
+void make_code_buffer(byte_t* byte_code, const char* file_name, cmd_t* cmd_buffer, int cmd_cnt);
+
+void translate_cmd(byte_t* bytecode, cmd_t* cmd_buffer, int cmd_cnt, char* input, int* index);
+
+void print_in_byte_code(byte_t* bytecode);
+
 int main(void) {
 
-    FILE* reader = fopen("ASM.txt", "r");
+    const char lang_commands[30] = "command_info.asm";
+    const char user_file_name[100] = "C:/Users/FAST LOAD/Documents/GitHub/stackstack/user_win.txt";
 
-    int cnt = file_line_cnt(reader);
+    int cnt = 0;     //count of commands in file with array of commands
 
-    rewind(reader);
+    cmd_t* cmd_buffer = fill_cmd_buffer(lang_commands, &cnt);
 
-    cnd_t* buffer = (cmd_t*)calloc(cnt, sizeof(cmd_t));
+    //for (int i = 0; i < 11; i++)
+        //printf("%s | %d\n", (cmd_buffer[i]).cmd_name, (cmd_buffer[i]).cmd_code);
 
-    fread(buffer, cnt*sizeof(cmd_t), reader);
-    
-    fclose(reader);
-    
-    
+    byte_t bytecode = {};
 
-    while (fscanf(reader, "%s %d", ))
+    make_code_buffer(&bytecode, user_file_name, cmd_buffer, cnt);
+
+    printf("fucking cnt is %d\n", cnt);
+
+    for (int i = 0; i < bytecode.capasity; i++) {
+        if (i % 2 == 0)
+            printf("pause\n");
+        printf("super res is %d\n", bytecode.buffer[i]);
+    }
+
+    assert(bytecode.buffer);
+
+   // print_in_byte_code(code_buffer);
+
+    print_in_byte_code(&bytecode);
 
     return 0;
 }
 
 int file_line_cnt(FILE* reader) {
-    int cnt = 0;
-    char buf[100] = {};
 
-    while((ch = (char)fgetc(reader)) != EOF) {
-        if (ch == '\n')
-            cnt++;
+    char cur[50] = {};
+    int cnt = 0;
+
+    while(fgets(cur, 50, reader) != NULL)
+        cnt++;
+
+    rewind(reader);
 
     return cnt;
 }

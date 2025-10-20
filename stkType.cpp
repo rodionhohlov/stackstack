@@ -5,6 +5,7 @@
 #include<stdlib.h>
 
 #define ASSERTED
+#define STACK_VERIFY stack_verify(stk, __FILE__, __LINE__)
 
 #include "stkType.h"
 
@@ -16,15 +17,23 @@ void stack_init(stack_t* stk, int min_stk_size) {
     stk->buffer = (int*)calloc(min_stk_size + 2, sizeof(int));
 
     stk->buffer[0] = canary_value;
+
+    stk->buffer[stk->stk_size + 1] = canary_value;
+
+    #ifdef ASSERTED
+        STACK_VERIFY;
+    #endif
 }
 
 void stack_push(stack_t* stk, int num) {
 
     #ifdef ASSERTED
-        stack_verify(stk, __FILE__, __LINE__);
+        STACK_VERIFY;
     #endif
 
     size_t ind = stk->flag;
+
+    //printf("we push %d\n", num);
 
     stk->buffer[ind] = num;
 
@@ -39,24 +48,24 @@ void stack_push(stack_t* stk, int num) {
     stk->buffer[stk->stk_size + 1] = canary_value;
 
     #ifdef ASSERTED
-        stack_verify(stk, __FILE__, __LINE__);
+        STACK_VERIFY;
     #endif
 }
 
 int stack_pop(stack_t* stk) {
 
     #ifdef ASSERTED
-        stack_verify(stk, __FILE__, __LINE__);
+        STACK_VERIFY;
     #endif
 
     stk->flag--;
 
     int value = stk->buffer[stk->flag];
 
-    printf("we got %d\n", value);
+    //printf("we got %d\n", value);
 
     #ifdef ASSERTED
-        stack_verify(stk, __FILE__, __LINE__);
+        STACK_VERIFY;
     #endif
 
     return value;
@@ -65,7 +74,7 @@ int stack_pop(stack_t* stk) {
 void stack_destroy(stack_t* stk) {
 
     #ifdef ASSERTED
-        stack_verify(stk, __FILE__, __LINE__);
+        STACK_VERIFY;
     #endif
 
     free(stk->buffer);
@@ -82,7 +91,7 @@ void stack_verify(stack_t* stk, const char* file, int line) {
     if (stk->buffer == NULL)
         stk->err = NULL_BUF;
 
-    else if (stk->flag - 1 > stk->stk_size)
+    else if (stk->flag > stk->stk_size)
         stk->err = FILL_SIZE;
 
     else if (stk->buffer[0] != canary_value)
@@ -98,9 +107,9 @@ void stack_verify(stack_t* stk, const char* file, int line) {
         stk->err = NULL_STACK;
 
     else if (stk->flag <= 0)
-        stk->err = LESS_NUL_FLG;
+        stk->err = LESS_NUL_FLAG;
 
-    if (stk->err != 0)
+    if (stk->err != NO_ERROR)
         stack_dump(stk, file, line);
 
 }
@@ -114,18 +123,18 @@ void stack_dump(stack_t* stk, const char* file, int line) {
 
     size_t i = 0;
 
-    //printf("\n\n the flag is %d\n\n", stk->flag - 1);
+    printf("\n\n the flag is %d\n\n", stk->flag - 1);
 
     char err_str[50] = {};
 
     translate_err_code(stk, err_str);
 
     printf("my mistake is: %s\n\n", err_str);
+    printf("line is %d\n", line);
+    printf("-----------\nsize and flag are %d %d\n---------\n", stk->stk_size, stk->flag);
 
     for (; i < (stk->flag - 1); i++)
         fprintf(output, "%10s [%d] = %d\n", "filled", i, stk->buffer[i]);
-
-    //printf("\n\n the flag is %d\n\n", stk->flag - 1);
 
     for (;i < stk->stk_size; i++)
         fprintf(output, "%10s [%d] = %d\n", "empty", i, stk->buffer[i]);
@@ -168,14 +177,22 @@ void translate_err_code(stack_t* stk, char* str) {
             sprintf(str, "null stack pointer");
             break;
 
-        case LESS_NUL_FLG:
+        case LESS_NUL_FLAG:
             sprintf(str, "flag is out of range");
             break;
 
         default:
             sprintf(str, "undefined error");
-            break;
     }
+}
+
+void show_stk(stack_t* stk) {
+
+    //printf("line: %d\nthe beginning of showing stack\n", line);
+
+    for (size_t i = 0; i <= stk->flag; i++) 
+        printf("  [%d] = %d\n", i, stk->buffer[i]);
+    
 }
 
 

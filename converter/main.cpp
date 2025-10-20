@@ -1,44 +1,39 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 
-//#include "../stkType.h"
-
-struct cmd_t {
-    char* cmd_name = {};
-    int cmd_code = 0;
-};
-
-int file_line_cnt(FILE* reader);
+#include "translate_funcs.h"
 
 int main(void) {
 
-    FILE* reader = fopen("ASM.txt", "r");
+    const char* lang_commands = "converter/command_info.txt";
+    const char user_file_name[100] = "user_win.asm";
 
-    int cnt = file_line_cnt(reader);
+    int cnt = 0;     //count of commands in file with array of commands
 
-    rewind(reader);
+    cmd_t* cmd_buffer = fill_cmd_buffer(lang_commands, &cnt);
 
-    cnd_t* buffer = (cmd_t*)calloc(cnt, sizeof(cmd_t));
+    //for (int i = 0; i < 11; i++)
+        //printf("%s | %d\n", (cmd_buffer[i]).cmd_name, (cmd_buffer[i]).cmd_code);
 
-    fread(buffer, cnt*sizeof(cmd_t), reader);
+    byte_t bytecode = {};
 
-    fclose(reader);
+    make_code_buffer(&bytecode, user_file_name, cmd_buffer, cnt);
 
-    reader = fopen("calculator.txt", "r");
+    printf("fucking cnt is %d\n", cnt);
 
+    for (int i = 0; i < bytecode.capasity; i++) {
+        if (i % 2 == 0)
+            printf("pause\n");
+        printf("super res is %d\n", bytecode.buffer[i]);
+    }
 
+    assert(bytecode.buffer);
 
-    while (fscanf(reader, "%s %d", ))
+   // print_in_byte_code(code_buffer);
+
+    print_in_byte_code(&bytecode);
 
     return 0;
-}
-
-int file_line_cnt(FILE* reader) {
-    int cnt = 0;
-    char buf[100] = {};
-
-    while((ch = (char)fgetc(reader)) != EOF) {
-        if (ch == '\n')
-            cnt++;
-
-    return cnt;
 }
