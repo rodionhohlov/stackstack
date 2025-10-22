@@ -7,6 +7,9 @@
 #include "calc.h"
 
 int main(void) {
+
+    clear_previous_result("output_window.txt");
+
     stack_t super_stk = {};
     stack_init(&super_stk, 5);
 

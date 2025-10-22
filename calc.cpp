@@ -9,16 +9,18 @@
 #include "asm_funcs.h"
 
 enum command_t {
-    PUSH = 1,
-    POP  = 2,
-    SUM  = 3,
-    SUB  = 4,
-    MUL  = 5,
-    DIV  = 6,
-    SQRT = 7,
-    OUT  = 8,
-    HLT  = 9,
-    IN   = 10
+    PUSH  = 1,
+    POP   = 2,
+    SUM   = 3,
+    SUB   = 4,
+    MUL   = 5,
+    DIV   = 6,
+    SQRT  = 7,
+    OUT   = 8,
+    HLT   = 9,
+    IN    = 10,
+    PUSHR = 11,
+    POPR  = 12
 };
 
 void program_slave(void) {
@@ -53,48 +55,29 @@ void solve_slave(byte_t* bytecode) {
 
         switch(bytecode->buffer[i]) {
 
-        case PUSH:
-            stack_push(&stk, bytecode->buffer[i+1]);
-            break;
+        case PUSH:  stack_push(&stk, bytecode->buffer[i+1]); break;
 
-        case POP: // enum
-            value = stack_pop(&stk);
-            break;
+        case POP:   value = stack_pop(&stk);                 break;
 
-        case SUM:
-            do_sum(&stk);
-            break;
+        case SUM:   do_sum(&stk);                            break;
 
-        case SUB:
-            do_sub(&stk);
-            break;
+        case SUB:   do_sub(&stk);                            break;
 
-        case MUL:
-            do_mul(&stk);
-            break;
+        case MUL:   do_mul(&stk);                            break;
 
-        case DIV:
-            do_div(&stk);
-            break;
+        case DIV:   do_div(&stk);                            break;
 
-        case SQRT:
-            do_sqrt(&stk);
-            break;
+        case SQRT:   do_sqrt(&stk);                          break;
 
-        case OUT:
-            do_out(&stk);
-            break;
+        case OUT:   do_out(&stk);                            break;
 
-        case HLT:
-            do_hlt(&stk);
-            return;
+        case HLT:   do_hlt(&stk);                           return;
 
-        case IN:
-            do_in(&stk);
-            break;
+        case IN:    do_in(&stk);                             break;
 
-        default:
-            do_dump(i/2 + 1, "output_window.txt");
+        case PUSHR:  do_popr(&stk);                          break;
+
+        default:   do_dump(i/2 + 1, "output_window.txt");
         }
     }
 

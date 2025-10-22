@@ -20,6 +20,8 @@ void stack_init(stack_t* stk, int min_stk_size) {
 
     stk->buffer[stk->stk_size + 1] = canary_value;
 
+    stk->registers = (int*)calloc(4, sizeof(int));
+
     #ifdef ASSERTED
         STACK_VERIFY;
     #endif
@@ -78,12 +80,15 @@ void stack_destroy(stack_t* stk) {
     #endif
 
     free(stk->buffer);
+    free(stk->registers);
 
     stk->stk_size = 0;
 
     stk->flag = 1;
 
     stk->buffer = NULL;
+
+    stk->registers = NULL;
 }
 
 void stack_verify(stack_t* stk, const char* file, int line) {
@@ -108,6 +113,9 @@ void stack_verify(stack_t* stk, const char* file, int line) {
 
     else if (stk->flag <= 0)
         stk->err = LESS_NUL_FLAG;
+
+    else if (stk->registers == NULL)
+        stk->err = NULL_REGISTERS;
 
     if (stk->err != NO_ERROR)
         stack_dump(stk, file, line);
@@ -180,19 +188,18 @@ void translate_err_code(stack_t* stk, char* str) {
         case LESS_NUL_FLAG:
             sprintf(str, "flag is out of range");
             break;
+        
+        case NULL_REGISTERS:
+            sprintf(str, "reguster ptr is NULL");
 
         default:
             sprintf(str, "undefined error");
     }
 }
 
-void show_stk(stack_t* stk) {
-
-    //printf("line: %d\nthe beginning of showing stack\n", line);
-
-    for (size_t i = 0; i <= stk->flag; i++) 
-        printf("  [%d] = %d\n", i, stk->buffer[i]);
-    
+void clear_previous_result(const char* file_name) {
+    FILE* reader = fopen(file_name, "w");
+    fclose(reader);
 }
 
 

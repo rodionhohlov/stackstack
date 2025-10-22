@@ -36,6 +36,8 @@ cmd_t* fill_cmd_buffer(const char* file_name, int* cnt) {
 
         fscanf(reader, "%s %d %d\n", (cmd_buffer + i)->cmd_name, &((cmd_buffer + i)->cmd_code), &((cmd_buffer + i)->expected_args));
 
+        //printf("result from file: %s %d %d\n", (cmd_buffer + i)->cmd_name, (cmd_buffer + i)->cmd_code, (cmd_buffer + i)->expected_args);
+
         assert((cmd_buffer + i)->cmd_name);
 
         //  printf("%d\n", scn);
@@ -71,6 +73,7 @@ void make_code_buffer(byte_t* bytecode, const char* file_name, cmd_t* cmd_buffer
     // printf("bimbimbambam\n");
 
     while (fgets(input, read_size, reader) != NULL) {
+        printf("success of reading %s\n", input);
 
         //printf("bimbimbambam line %d\n", __LINE__);
 
@@ -90,35 +93,79 @@ void translate_cmd(byte_t* bytecode, cmd_t* cmd_buffer, int cmd_cnt, char* input
     assert(cmd_buffer);
     assert(input);
 
-    int value = 0;
+    char value[30] = {};
     char cmd[30] = {};
 
-    int scanned = sscanf(input, "%s %d;  \n", cmd, &value);
+    int scanned = sscanf(input, "%s %s;  \n", cmd, value);
 
     //printf("line is _%s %d %s_\n", cmd, value, comment);
 
     int found = 0;
 
-    for (int i = 0; i < cmd_cnt; i++) {
+    for (int i = 0; i < cmd_cnt; i++) {//TODO: atoi value
 
        // printf("optimus prime:(\n");
 
         if (strcmp(cmd_buffer[i].cmd_name, cmd) == 0) {
 
-          //  printf("%s (|) %d\n", cmd, value);
-            if (scanned == 2 || scanned == cmd_buffer[i].expected_args) {
+            printf("%s (|) %s\n", cmd, value);
+            if (scanned == 2 && scanned == cmd_buffer[i].expected_args) {
+
+                //printf("one\n");
+
+                found = 1;
+                //int* digit_val = NULL;
+
+                //my_a_to_i(value, digit_val);
+                
+                printf("two\n");
+
+                int res = 0;
+            
+                if (value[0] - 'A' == 0) {
+                    printf("%s", value);
+                    bytecode->buffer[*index+1] = 1;
+                }
+                
+                else if (value[0] - 'A' == 1) {
+                    bytecode->buffer[*index+1] = 2;
+                    printf("%s", value);
+                }
+                
+                else if (value[0] - 'A' == 2) {
+                    bytecode->buffer[*index+1] = 3;
+                    printf("%s", value);
+                }
+                
+                else if (value[0] - 'A' == 3) {
+                    bytecode->buffer[*index+1] = 4;
+                    printf("%s", value);
+                }
+
+                else if ((res = atoi(value)) != 0) {
+                    bytecode->buffer[*index+1] = res;
+                    printf("%s", value);
+                }
+                
+                else 
+                    found = 0;
+                
+                
+            
+                break;
 
                 bytecode->buffer[*index]   = cmd_buffer[i].cmd_code;
-                bytecode->buffer[*index+1] = value;
             }
 
-            else if (scanned == 1 || scanned == cmd_buffer[i].expected_args)
+            else if (scanned == 1 && scanned == cmd_buffer[i].expected_args) {
                 bytecode->buffer[*index]   = cmd_buffer[i].cmd_code;
+                break;
+            }
 
             else
                 printf("syntax error, undefined command in line %d\n", (*index/2) + 1);
-
-            printf("original %s %d\n", cmd_buffer[i].cmd_name, value);
+    
+            printf("original %s %s\n", cmd_buffer[i].cmd_name, value);
             printf("in buffer %d %d\n", bytecode->buffer[*index], bytecode->buffer[*index+1]);
            // printf("i = %d\n", i);
             printf("index = %d\n\n", *index);
@@ -159,4 +206,3 @@ int file_line_cnt(FILE* reader) {
 
     return cnt;
 }
-

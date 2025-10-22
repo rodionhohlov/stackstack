@@ -91,15 +91,56 @@ void do_in(stack_t* stk) {
 
     assert(stk);
 
-    int val = 0;
+    printf("Argument to push: ");
+    
+    int value = get_num();
 
-    for (int i = stk->flag; scanf("%d", &val) != 0; i++) {
-
-        stack_push(stk, val);
-    }
+    stack_push(stk, value);
 }
 
 void do_dump(int line, const char* file) {
     printf("%s: dump is called from LINE %d\n", file, line);
     printf("error of uncoding command");
+}
+
+int get_num(void) {
+
+    int value = 0;
+    char sym = '\0';
+
+    while (((scanf("%d", &value) != 1) || (getchar() != '\n'))) {
+        while ((sym = getchar()) != '\n')
+            continue;
+        
+        printf("invalid type of vaue\nplease try again\n");
+    }
+
+    return value;
+}
+
+void do_popr(stack_t* stk) {
+    int value = stack_pop(stk);
+
+    stack_push(stk, value);
+
+    switch(value) {
+        case AX:
+            stk->registers[0] = value;
+            break;
+
+        case BX:
+            stk->registers[1] = value;
+            break;
+
+        case CX:
+            stk->registers[2] = value;
+            break;
+
+        case DX:
+            stk->registers[3] = value;
+            break;
+        
+        default:
+            printf("undefined register\n");
+    }
 }

@@ -21,4 +21,8 @@ void do_in(stack_t* stk);
 
 void do_dump(int line, const char* file);
 
+int get_num(void);
+
+void do_popr(stack_t* stk);
+
 #endif

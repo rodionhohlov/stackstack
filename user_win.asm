@@ -1,5 +1,4 @@
-PUSH 13 ; we push 13
-PUSH 13
-MUL
-OUT
+PUSH 0
+PUSH 3
+POPR AX
 HLT
